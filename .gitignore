@@ -1,0 +1,8 @@
+# immagini delle carte: si riscaricano con tools/fetch_cards.py
+img/
+# risposte grezze dell'API usate durante lo sviluppo
+data/
+# configurazione locale degli strumenti
+.claude/
+_site/
+__pycache__/

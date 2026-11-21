@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grafo combo – Destino Bianco Occhi Blu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="left">
+    <h1>Grafo combo <span>Destino Bianco Occhi Blu · TCG · turno 1</span></h1>
+
+    <section>
+      <h2>Mano iniziale</h2>
+      <div id="hand" class="cards"></div>
+      <div class="row">
+        <select id="preset"><option value="">Esempi…</option></select>
+        <button id="clear" class="ghost">Svuota</button>
+        <button id="go" class="primary">Calcola</button>
+      </div>
+      <details id="pickerBox" open>
+        <summary>Aggiungi carte (clic)</summary>
+        <div id="picker" class="cards small"></div>
+      </details>
+    </section>
+
+    <section id="topBox" hidden>
+      <h2>Campi finali migliori <span id="stats"></span></h2>
+      <ol id="top"></ol>
+    </section>
+
+    <section id="lineBox" hidden>
+      <h2>Linea</h2>
+      <ol id="line"></ol>
+    </section>
+  </aside>
+
+  <main>
+    <div id="cy"></div>
+    <div id="toolbar">
+      <button id="fit" class="ghost">Adatta vista</button>
+      <button id="expand" class="ghost">Espandi mosse del nodo</button>
+      <button id="bestHere" class="ghost">Mostra linea migliore da qui</button>
+      <button id="reset" class="ghost">Pulisci grafo</button>
+    </div>
+    <div id="legend">
+      <span><i class="k path"></i>percorso scelto</span>
+      <span><i class="k best"></i>linea migliore</span>
+      <span><i class="k neg"></i>effetto annullato</span>
+      <span><i class="k term"></i>campo finale</span>
+    </div>
+    <div id="empty">Scegli una o più carte a sinistra e premi <b>Calcola</b>.</div>
+    <div id="busy" hidden>Calcolo in corso…</div>
+  </main>
+
+  <aside id="right">
+    <div id="panel"><p class="muted">Qui compare lo stato del nodo selezionato: mano, campo, Cimitero e tutte le mosse possibili.</p></div>
+  </aside>
+</div>
+<div id="preview" hidden></div>
+
+<script src="vendor/cytoscape.min.js"></script>
+<script src="vendor/dagre.min.js"></script>
+<script src="vendor/cytoscape-dagre.min.js"></script>
+<script src="cards.js"></script>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
