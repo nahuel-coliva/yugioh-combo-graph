@@ -165,9 +165,8 @@ function compute() {
     addLine(s0, G.bestLine(root), 'best');
     layout(true);
     if (cy.zoom() < 0.75) { // linea lunga: meglio leggibile che tutta visibile
-      cy.zoom(0.75);
-      const bb = cy.getElementById(path[0].key).renderedBoundingBox();
-      cy.panBy({ x: 60 - bb.x1, y: cy.height() / 2 - (bb.y1 + bb.y2) / 2 });
+      const z = 0.75, p = cy.getElementById(path[0].key).position();
+      cy.viewport({ zoom: z, pan: { x: 70 - p.x * z, y: cy.height() / 2 - p.y * z } });
     }
     refresh();
   });

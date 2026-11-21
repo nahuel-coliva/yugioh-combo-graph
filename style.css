@@ -77,6 +77,15 @@ ol { margin: 0; padding: 0; list-style: none; counter-reset: n; }
 #busy { background: #0d1117cc; color: var(--text); pointer-events: all; }
 [hidden] { display: none !important; }
 
+/* schermi stretti (telefono): le tre colonne diventano una sola */
+@media (max-width: 900px) {
+  #app { display: block; height: auto; }
+  aside { overflow: visible; border: 0 !important; }
+  main { height: 70vh; border-block: 1px solid var(--line); }
+  #toolbar { flex-wrap: wrap; right: 10px; }
+  #legend { flex-wrap: wrap; gap: 4px 12px; right: 10px; }
+}
+
 #preview { position: fixed; z-index: 10; width: 250px; background: #0b0f16; border: 1px solid var(--line); border-radius: 8px; padding: 10px; box-shadow: 0 10px 30px #000a; pointer-events: none; }
 #preview img { width: 120px; float: left; margin: 0 10px 6px 0; border-radius: 4px; }
 #preview b { display: block; margin-bottom: 4px; }
