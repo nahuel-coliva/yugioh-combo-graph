@@ -22,17 +22,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-node@v4
         with:
-          python-version: "3.12"
-      - name: Controlla il motore
-        run: node test_engine.js MAIDEN
+          node-version: 22
+      - name: Controlla il motore (confronto con il riferimento)
+        run: node test_engine.js
       - name: Scarica le immagini delle carte
-        run: python tools/fetch_cards.py
+        run: node tools/fetch_cards.js
       - name: Prepara il sito
         run: |
           mkdir _site
-          cp -r index.html style.css app.js engine.js cards.js img vendor _site/
+          cp -r index.html style.css app.js core.js cards.js decks img vendor _site/
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,14 +1,12 @@
-/* Interfaccia del grafo combo. Lo stato del gioco vive in engine.js; qui solo vista e navigazione. */
+/* Interfaccia del grafo combo. Regole e ricerca vivono in core.js e decks/*.js; qui solo vista e navigazione. */
 (function () {
 'use strict';
-const E = window.Engine, INFO = window.CARD_INFO;
+const Core = window.ComboCore, INFO = window.CARD_INFO;
+let E = null; // motore del mazzo selezionato
 const CAP = 70000;      // nuovi stati esplorati per ogni calcolo / affinamento (~2 s)
 const MAX_MEM = 900000; // oltre questa soglia si riparte dal nodo corrente per non saturare la memoria
 const $ = (id) => document.getElementById(id);
 
-// nomi italiani (dove il database li ha) e immagini
-for (const c in E.C) { const i = INFO[E.C[c].en]; if (i && i.it) E.names[c] = i.it; }
-E.names.X = 'una carta qualsiasi';
 const info = (c) => INFO[E.C[c].en];
 const imgOf = (c) => (c === 'X' || !info(c) ? null : 'img/' + info(c).id + '.jpg');
 const esc = (t) => String(t).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
@@ -42,10 +40,7 @@ document.addEventListener('mouseover', (e) => {
 });
 
 // ---------------------------------------------------------------- scelta della mano
-let hand = [];
-const ORDER = Object.keys(E.MAIN).concat(['X']);
-const PRESETS = [['MAIDEN'], ['SAGE'], ['WISHES', 'X'], ['SAGE', 'MAIDEN'], ['WISHES', 'SAGE'], ['MAIDEN', 'ROAR'], ['DICT', 'SAGE'],
-  ['NKSH', 'SAGE', 'MAIDEN'], ['MELODY', 'SAGE', 'X'], ['DICT', 'BEWD', 'MAIDEN']];
+let hand = [], ORDER = [], PRESETS = [];
 
 function renderHand() {
   const h = $('hand'); h.innerHTML = '';
@@ -58,7 +53,6 @@ function renderHand() {
     p.appendChild(el);
   }
 }
-PRESETS.forEach((p, i) => { const o = document.createElement('option'); o.value = i; o.textContent = p.map(E.N).join(' + '); $('preset').appendChild(o); });
 $('preset').onchange = (e) => { if (e.target.value === '') return; hand = PRESETS[+e.target.value].slice(); renderHand(); compute(); };
 $('clear').onclick = () => { hand = []; $('preset').value = ''; renderHand(); };
 $('go').onclick = () => compute();
@@ -124,6 +118,7 @@ function ensureEdge(from, to, via, cls) {
   return id;
 }
 function layout(fit) {
+  cy.stop();
   cy.layout({ name: 'dagre', rankDir: 'LR', nodeSep: 46, rankSep: 170, edgeSep: 30, animate: false, fit: !!fit, padding: 40 }).run();
 }
 
@@ -222,7 +217,7 @@ function jumpTo(k) {
   }
   refresh();
 }
-$('fit').onclick = () => cy && cy.fit(undefined, 40);
+$('fit').onclick = () => { if (cy) { cy.stop(); cy.fit(undefined, 40); } }; // stop: un'animazione in corso sposterebbe di nuovo la vista
 $('reset').onclick = () => {
   if (!cy || !path.length) return;
   cy.elements().remove(); nodes = new Map();
@@ -249,7 +244,7 @@ function refresh(center) {
     if (i) cy.getElementById(path[i - 1].key + '>>' + path[i].key + '|' + (path[i].via.neg ? 'NEG ' : '') + path[i].via.label).addClass('onpath');
   }
   const n = cy.getElementById(cur.key); n.addClass('sel');
-  if (center) cy.animate({ center: { eles: n } }, { duration: 250 });
+  if (center) { cy.stop(); cy.animate({ center: { eles: n } }, { duration: 250 }); }
   const id = gid(cur.state);
   renderPanel(cur, id);
   renderLine(cur, id);
@@ -355,5 +350,30 @@ function renderPanel(cur, id) {
   }
 }
 
-renderHand();
+// ---------------------------------------------------------------- scelta del mazzo
+function loadDeck(id) {
+  const deck = Core.decks[id];
+  E = Core.createEngine(deck);
+  // nomi italiani dove il database li ha
+  for (const c in E.C) { const i = INFO[E.C[c].en]; if (i && i.it) E.names[c] = i.it; }
+  E.names.X = 'una carta qualsiasi';
+  ORDER = Object.keys(E.MAIN).concat(['X']);
+  PRESETS = deck.presets || [];
+  const ps = $('preset'); ps.length = 1; ps.value = '';
+  PRESETS.forEach((p, i) => { const o = document.createElement('option'); o.value = i; o.textContent = p.map(E.N).join(' + '); ps.appendChild(o); });
+  $('deck').value = id;
+  $('deckNote').textContent = deck.note || '';
+  document.title = 'Grafo combo – ' + deck.name;
+  if (location.hash.slice(1) !== id) history.replaceState(null, '', '#' + id);
+  // azzera tutto cio' che riguardava il mazzo precedente
+  hand = []; G = null; path = []; tops = []; nodes = new Map();
+  if (cy) cy.elements().remove();
+  $('topBox').hidden = true; $('lineBox').hidden = true; $('empty').hidden = false;
+  $('panel').innerHTML = '<p class="muted">Qui compare lo stato del nodo selezionato: mano, campo, Cimitero e tutte le mosse possibili.</p>';
+  renderHand();
+}
+for (const id in Core.decks) { const o = document.createElement('option'); o.value = id; o.textContent = Core.decks[id].name; $('deck').appendChild(o); }
+$('deck').onchange = (e) => loadDeck(e.target.value);
+const wanted = location.hash.slice(1);
+loadDeck(Core.decks[wanted] ? wanted : Object.keys(Core.decks)[0]);
 })();

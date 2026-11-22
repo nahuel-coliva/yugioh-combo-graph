@@ -1,0 +1,373 @@
+{
+ "blue-eyes": [
+  {
+   "hand": [
+    "MAIDEN"
+   ],
+   "exact": true,
+   "states": 95,
+   "best": 37,
+   "dist": 6
+  },
+  {
+   "hand": [
+    "SAGE"
+   ],
+   "exact": true,
+   "states": 1683,
+   "best": 50,
+   "dist": 14
+  },
+  {
+   "hand": [
+    "WISHES",
+    "X"
+   ],
+   "exact": true,
+   "states": 56316,
+   "best": 60,
+   "dist": 16
+  },
+  {
+   "hand": [
+    "DICT"
+   ],
+   "exact": true,
+   "states": 18,
+   "best": 3.5,
+   "dist": 5
+  },
+  {
+   "hand": [
+    "ROAR"
+   ],
+   "exact": true,
+   "states": 2,
+   "best": 4,
+   "dist": 2
+  },
+  {
+   "hand": [
+    "MELODY",
+    "X"
+   ],
+   "exact": true,
+   "states": 13,
+   "best": 3.5,
+   "dist": 3
+  },
+  {
+   "hand": [
+    "NKSH"
+   ],
+   "exact": true,
+   "states": 242,
+   "best": 29,
+   "dist": 10
+  },
+  {
+   "hand": [
+    "MAUS"
+   ],
+   "exact": true,
+   "states": 2,
+   "best": 1.5,
+   "dist": 1
+  },
+  {
+   "hand": [
+    "MAIDEN",
+    "ROAR"
+   ],
+   "exact": true,
+   "states": 48242,
+   "best": 67,
+   "dist": 17
+  },
+  {
+   "hand": [
+    "DICT",
+    "BEWD",
+    "MAIDEN"
+   ],
+   "exact": false,
+   "states": 60001,
+   "best": 69.5,
+   "dist": 19
+  },
+  {
+   "hand": [
+    "NKSH",
+    "MAIDEN"
+   ],
+   "exact": false,
+   "states": 60001,
+   "best": 65,
+   "dist": 18
+  },
+  {
+   "hand": [
+    "ABYSS",
+    "ROAR",
+    "CFORM"
+   ],
+   "exact": true,
+   "states": 2,
+   "best": 7,
+   "dist": 2
+  },
+  {
+   "hand": [
+    "MELODY",
+    "MAX",
+    "CFORM",
+    "X"
+   ],
+   "exact": true,
+   "states": 54,
+   "best": 14,
+   "dist": 4
+  },
+  {
+   "hand": [
+    "TRADE",
+    "BEWD",
+    "ALT",
+    "UFUSION"
+   ],
+   "exact": true,
+   "states": 12,
+   "best": 15,
+   "dist": 2
+  },
+  {
+   "hand": [
+    "SAGE",
+    "MAIDEN"
+   ],
+   "exact": false,
+   "states": 60001,
+   "best": 65,
+   "dist": 18
+  },
+  {
+   "hand": [
+    "WISHES",
+    "SAGE"
+   ],
+   "exact": false,
+   "states": 60003,
+   "best": 68,
+   "dist": 17
+  },
+  {
+   "hand": [
+    "NKSH",
+    "SAGE",
+    "MAIDEN"
+   ],
+   "exact": false,
+   "states": 60002,
+   "best": 70.5,
+   "dist": 20
+  }
+ ],
+ "traptrix": [
+  {
+   "hand": [
+    "MYRM"
+   ],
+   "exact": true,
+   "states": 6,
+   "best": 18,
+   "dist": 4
+  },
+  {
+   "hand": [
+    "MANTIS"
+   ],
+   "exact": true,
+   "states": 86,
+   "best": 25,
+   "dist": 8
+  },
+  {
+   "hand": [
+    "PUDICA"
+   ],
+   "exact": true,
+   "states": 7,
+   "best": 12.5,
+   "dist": 4
+  },
+  {
+   "hand": [
+    "MYRM",
+    "BRIG"
+   ],
+   "exact": true,
+   "states": 25480,
+   "best": 51,
+   "dist": 18
+  },
+  {
+   "hand": [
+    "MANTIS",
+    "BOTTOM"
+   ],
+   "exact": true,
+   "states": 7232,
+   "best": 43,
+   "dist": 12
+  },
+  {
+   "hand": [
+    "PUDICA",
+    "MYRM"
+   ],
+   "exact": false,
+   "states": 60001,
+   "best": 44,
+   "dist": 16
+  },
+  {
+   "hand": [
+    "LONE"
+   ],
+   "exact": true,
+   "states": 13,
+   "best": 11,
+   "dist": 4
+  },
+  {
+   "hand": [
+    "MYRM",
+    "ARACHNO"
+   ],
+   "exact": true,
+   "states": 7493,
+   "best": 43,
+   "dist": 12
+  },
+  {
+   "hand": [
+    "MANTIS",
+    "HOLEUTEA",
+    "BOTTOM"
+   ],
+   "exact": true,
+   "states": 40236,
+   "best": 50,
+   "dist": 10
+  },
+  {
+   "hand": [
+    "DION",
+    "BRIG",
+    "TUNE"
+   ],
+   "exact": true,
+   "states": 4092,
+   "best": 38.5,
+   "dist": 11
+  }
+ ],
+ "fallen-virtuous": [
+  {
+   "hand": [
+    "BFUS"
+   ],
+   "exact": true,
+   "states": 1915,
+   "best": 28,
+   "dist": 7
+  },
+  {
+   "hand": [
+    "ALUBER"
+   ],
+   "exact": true,
+   "states": 2293,
+   "best": 29,
+   "dist": 9
+  },
+  {
+   "hand": [
+    "QUEM"
+   ],
+   "exact": true,
+   "states": 32,
+   "best": 1.5,
+   "dist": 1
+  },
+  {
+   "hand": [
+    "FDEPLOY"
+   ],
+   "exact": true,
+   "states": 3,
+   "best": 6,
+   "dist": 2
+  },
+  {
+   "hand": [
+    "FOOLISH"
+   ],
+   "exact": true,
+   "states": 2709,
+   "best": 32,
+   "dist": 10
+  },
+  {
+   "hand": [
+    "ALUBER",
+    "CART"
+   ],
+   "exact": false,
+   "states": 60002,
+   "best": 41,
+   "dist": 13
+  },
+  {
+   "hand": [
+    "QUEM",
+    "BFUS"
+   ],
+   "exact": false,
+   "states": 60001,
+   "best": 38,
+   "dist": 17
+  },
+  {
+   "hand": [
+    "BFUS",
+    "MAGN"
+   ],
+   "exact": true,
+   "states": 50127,
+   "best": 38.5,
+   "dist": 10
+  },
+  {
+   "hand": [
+    "NADIR",
+    "X"
+   ],
+   "exact": true,
+   "states": 3005,
+   "best": 19.5,
+   "dist": 5
+  },
+  {
+   "hand": [
+    "ALUBER",
+    "SARO",
+    "X"
+   ],
+   "exact": false,
+   "states": 60004,
+   "best": 39,
+   "dist": 21
+  }
+ ]
+}

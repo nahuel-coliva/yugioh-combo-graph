@@ -3,13 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grafo combo – Destino Bianco Occhi Blu</title>
+<title>Grafo combo</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="app">
   <aside id="left">
-    <h1>Grafo combo <span>Destino Bianco Occhi Blu · TCG · turno 1</span></h1>
+    <h1>Grafo combo <span id="deckNote"></span></h1>
+
+    <section>
+      <h2>Mazzo</h2>
+      <select id="deck" style="width:100%"></select>
+    </section>
 
     <section>
       <h2>Mano iniziale</h2>
@@ -64,7 +69,11 @@
 <script src="vendor/dagre.min.js"></script>
 <script src="vendor/cytoscape-dagre.min.js"></script>
 <script src="cards.js"></script>
-<script src="engine.js"></script>
+<script src="core.js"></script>
+<!-- un file per mazzo: aggiungi qui i nuovi -->
+<script src="decks/blue-eyes.js"></script>
+<script src="decks/traptrix.js"></script>
+<script src="decks/fallen-virtuous.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
